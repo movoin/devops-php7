@@ -1,0 +1,15 @@
+{
+  "config": {
+    "preferred-install": "dist",
+    "secure-http": false
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packagist.laravel-china.org"
+    },
+    {
+      "packagist": false
+    }
+  ]
+}
