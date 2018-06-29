@@ -1,5 +1,3 @@
-source /opt/docker/bin/functions.sh
-
 # Deps
 buildDeps=" \
 	zlib-devel \
@@ -17,35 +15,7 @@ buildDeps=" \
 	gd-devel
 "
 
-/usr/local/bin/docker-install $buildDeps
-
-# Libzip
-cd /tmp
-wget https://nih.at/libzip/libzip-1.2.0.tar.gz
-tar -zxvf libzip-1.2.0.tar.gz
-cd libzip-1.2.0
-./configure
-make && make install
-
-ln -s /usr/local/lib/libzip/include/zipconf.h /usr/local/include
-
-cd /tmp
-
-rm -f /tmp/libzip-1.2.0.tar.gz
-rm -rf /tmp/libzip-1.2.0
-
-# Re2c
-cd /tmp
-wget https://github.com/skvadrik/re2c/releases/download/0.14.3/re2c-0.14.3.tar.gz
-tar -zxvf re2c-0.14.3.tar.gz
-cd re2c-0.14.3/
-./configure --prefix=/usr/local
-make && make install
-
-cd /tmp
-
-rm -f /tmp/re2c-0.14.3.tar.gz
-rm -rf /tmp/re2c-0.14.3/
+/usr/local/bin/docker-install $buildDeps re2c
 
 # Install
 cd /tmp
@@ -66,7 +36,6 @@ cd /tmp/php-"$PHP_VERSION"
 	--with-mhash \
 	--with-openssl \
 	--with-gettext \
-	--with-libzip \
 	--with-libxml-dir=/usr \
 	--with-pdo-mysql=mysqlnd \
 	--with-mysqli=mysqlnd \

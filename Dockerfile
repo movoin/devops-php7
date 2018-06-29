@@ -12,9 +12,13 @@ ENV PHP_VERSION     7.2.7
 ENV PHP_URL         "http://cn.php.net/distributions/php-${PHP_VERSION}.tar.gz"
 ENV PHP_INI_DIR     /etc/php
 
+ENV EPEL_URL        "http://mirrors.aliyun.com/repo/epel-7.repo"
+
 COPY conf/ /opt/docker/
 
 RUN set -x \
+    && curl -o /etc/yum.repos.d/epel.repo $EPEL_URL \
+    && sed -i 's@gpgcheck=1@gpgcheck=0@g' /etc/yum.repos.d/epel.repo \
     && /usr/local/bin/docker-install \
         autoconf \
         bison \
