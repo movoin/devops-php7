@@ -19,7 +19,7 @@ echo "> Running docker"
 
 echo ""
 
-docker build -t "${REPO_NAME}" ${DOCKERFILE_PATH}
+docker build --no-cache --force-rm -t "${REPO_NAME}" ${DOCKERFILE_PATH}
 
 echo ""
 

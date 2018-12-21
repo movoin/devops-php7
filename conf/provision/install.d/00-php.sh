@@ -1,6 +1,5 @@
 # Deps
-buildDeps=" \
-	zlib-devel \
+BUILDDEPS=" \
 	pcre-devel \
 	libxml2-devel \
 	openssl-devel \
@@ -15,7 +14,7 @@ buildDeps=" \
 	gd-devel
 "
 
-/usr/local/bin/docker-install $buildDeps re2c
+/usr/local/bin/docker-install $BUILDDEPS re2c
 
 # Install
 cd /tmp
@@ -28,7 +27,6 @@ cd /tmp/php-"$PHP_VERSION"
 	--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 	--with-curl \
 	--with-libedit \
-	--with-zlib \
 	--with-gd \
 	--with-freetype-dir \
 	--with-jpeg-dir \
@@ -40,6 +38,8 @@ cd /tmp/php-"$PHP_VERSION"
 	--with-pdo-mysql=mysqlnd \
 	--with-mysqli=mysqlnd \
 	--with-bz2=/usr \
+	--without-pear \
+	--disable-phar \
 	--disable-cgi \
 	--disable-ipv6 \
 	--disable-debug \
@@ -68,5 +68,4 @@ mkdir -p $PHP_INI_DIR/conf.d
 # Clean
 rm -f /tmp/php-"$PHP_VERSION".tar.gz
 rm -rf /tmp/php-"$PHP_VERSION"
-yum -y erase $buildDeps
-yum clean all
+yum -y erase $BUILDDEPS

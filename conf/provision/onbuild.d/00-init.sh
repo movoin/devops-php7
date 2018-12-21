@@ -1,6 +1,9 @@
-source /opt/docker/bin/functions.sh
+###
+ # Common Functions
+ ##
+source "$DOCKER_CONF_PATH/bin/functions.sh"
 
 # Create php.ini
-copyFileTo "/opt/docker/etc/php/php.ini" "/etc/php/conf.d/zzz-docker.ini"
+copyFileTo "$DOCKER_CONF_PATH/etc/php/php.ini" "/etc/php/conf.d/zzz-docker.ini"
 
-rm -rf /opt/docker/etc/php/
+rm -rf $DOCKER_CONF_PATH/etc/php/
