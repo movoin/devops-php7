@@ -7,7 +7,7 @@
 
 FROM movoin/devops-centos
 
-ENV PHP_VERSION     7.2.13
+ENV PHP_VERSION     7.2.26
 ENV PHP_URL         "http://cn.php.net/distributions/php-${PHP_VERSION}.tar.gz"
 ENV PHP_INI_DIR     /etc/php
 

@@ -7,7 +7,7 @@ source "$DOCKER_CONF_PATH/bin/functions.sh"
  # Install composer
  ##
 cd /tmp
-wget https://dl.laravel-china.org/composer.phar
+wget https://mirrors.aliyun.com/composer/composer.phar
 mv /tmp/composer.phar /usr/local/bin/composer
 chmod a+x /usr/local/bin/composer
 
