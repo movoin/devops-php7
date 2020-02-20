@@ -12,14 +12,14 @@ BUILDDEPS=" \
 	libpng-devel \
 	glibc-devel \
 	glib2-devel \
-	gd-devel
+	gd-devel \
+	gmp-devel
 "
 
 /usr/local/bin/docker-install $BUILDDEPS re2c
 
 # Install
 cd /tmp
-wget "$PHP_URL"
 tar xzf php-"$PHP_VERSION".tar.gz
 cd /tmp/php-"$PHP_VERSION"
 
@@ -36,6 +36,7 @@ cd /tmp/php-"$PHP_VERSION"
 	--with-mhash \
 	--with-openssl \
 	--with-gettext \
+	--with-gmp \
 	--with-libxml-dir=/usr \
 	--with-pdo-mysql=mysqlnd \
 	--with-mysqli=mysqlnd \
